@@ -6,6 +6,12 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+flask = "*"
+gunicorn = "*"
+gevent = "*"
 
 [requires]
 python_version = "3.6"
+
+[scripts]
+server = "gunicorn --workers 4 -k gevent --bind 0.0.0.0:${APP_PORT} --access-logfile - template.server.main:app"
